@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE htmanimationl>
+<html lang="en">
+
+<head>
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   <meta content="" name="keywords">
+   <meta content="" name="description">
+
+   <title>ASDChildrenPrediction</title>
+   <meta content="" name="keywords" />
+   <meta content="" name="description" />
+   
+   <!-- Google Web Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet" />
+
+   <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet" />
+   <!-- Icon Font Stylesheet -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+   <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+   <!-- Libraries Stylesheet -->
+   <link rel="stylesheet" href="{% static 'lib/animate/animate.min.css' %}">
+   <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
+   
+   <!-- Customized Bootstrap Stylesheet -->
+   <link href="{% static 'blog/bootstrap.min.css' %}" rel="stylesheet">
+   <!-- Template Stylesheet -->
+   <link rel="stylesheet" type="text/css" href="{%static 'blog/style.css'%}">
+   
+
+</head>
+
+<body>
+   
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light  p-0">
+   <a href="" class="navbar-brand d-flex align-items-center px-2 px-lg-4">
+      <img src="{%static 'images\icon\10.png' %}" width="50" height="60" />
+
+      <h4 class="m-0" style="color: black;">Silent Speak</h4>
+   </a>
+   <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+         <a class="nav-item nav-link underline-animation" href="{%url 'blog-home'%}">Home</a>
+         <a class="nav-item nav-link underline-animation" href="{%url 'blog-report'%}">report</a>
+                   {%if user.is_authenticated %}
+                   <a class="nav-item nav-link underline-animation" href="{%url 'predict'%}">check</a>
+                   {% endif%}
+                 </div>
+                 <!-- Navbar Right Side -->
+                 <div class="navbar-nav ms-auto  ">
+                  {% if user.is_authenticated %}
+                  <div class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                  <i class="fas fa-user"></i>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a href="{% url 'profile' %}" class="dropdown-item pt-2">My Profile</a></li>
+                    <li>
+                      <form method="post" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                      <button type="submit" class="dropdown-item underline-animation">Logout</button>
+                       </form>
+                     </li>
+                  </ul>
+              </div>
+                  {% else %} 
+                <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fas fa-user"></i>
+                </a>
+                <ul class="dropdown-menu bg-light m-0" aria-labelledby="navbarDropdown">
+                  <li><a href="{% url 'login' %}" class="dropdown-item">Login</a></li>
+                  <li><a href="{% url 'register' %}" class="dropdown-item">Register</a></li>
+                </ul>
+               </div>
+                   {% endif %}
+
+            </div>
+   </div>  
+         </div>
+         
+              
+      </div>
+   
+</nav>
+<!-- Navbar End -->
+
+
+   <!-- Carousel Start -->
+   <div class="container-fluid p-0 wow fadeIn" data-wow-delay="2.0s">
+      <div id="header-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+                  <video id="myVideo" width="320" height="240" autoplay loop muted>
+                    <source src="{% static 'videos/5.mp4' %}" type="video/mp4">
+                  </video>
+               <div class="carousel-caption">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                           <h1 class="display-1 text-white mb-5 animated slideInDown">
+                             The Sound of Silence
+                           </h1>
+                           <a href="" class="btn btn-bluee py-sm-3 px-sm-4">Explore More</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+                  <video id="myVideo" width="320" height="240" autoplay loop muted>
+                    <source src="{% static 'videos/2.mp4' %}" type="video/mp4">
+                  </video>
+               <div class="carousel-caption">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                           <h1 class="display-1 text-white mb-5 animated slideInDown">
+                             Hands Tell Stories
+                           </h1>
+                           <a href="" class="btn btn-bluee py-sm-3 px-sm-4">Explore More</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+                  <video id="myVideo" width="320" height="240" autoplay loop muted>
+                    <source src="{% static 'videos/3.mp4' %}" type="video/mp4">
+                  </video>
+               <div class="carousel-caption">
+                  <div class="container">
+                     <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                           <h1 class="display-1 text-white mb-5 animated slideInDown">
+                             Digital Aids, Hands Express
+                           </h1>
+                           <a href="" class="btn btn-bluee py-sm-3 px-sm-4">Explore More</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+         </button>
+         <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+         </button>
+      </div>
+   </div>
+   <!-- Carousel End -->
+
+   <!-- Services Start -->
+   <div class="container-xxl py-5">
+      <div class="container">
+         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px">
+            <h1 class="display-5 mb-5">We offer you ....</h1>
+         </div>
+         <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="service-item rounded d-flex h-100">
+                  <div class="service-img rounded">
+                     <img class="img-fluid" src="{%static 'images/7.jpg' %}" alt="" />
+                  </div>
+                  <div class="service-text rounded p-5">
+                     <div class="btn-square rounded-circle mx-auto mb-3">
+                        <img class="img-fluid" src="{%static 'images/icon/7.jpg'  %}" alt="Icon" />
+                     </div>
+                     <h4 class="mb-3">Hand Gestures Translation </h4>
+                     <p class="mb-4">
+                        Hand gestures translation offers a concise and non-verbal way to convey meaning, ideal for situations where spoken language barriers exist or where silence is preferred. It enhances cross-cultural communication and accessibility, fostering understanding without language limitations..
+                     </p>
+                     <a class="btn btn-sm" href=""><i class="fa fa-plus me-2"></i>Read More</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="service-item rounded d-flex h-100">
+                  <div class="service-img rounded">
+                     <img class="img-fluid" src="{%static 'images/6.jpg' %}" alt="" />
+                  </div>
+                  <div class="service-text rounded p-5">
+                     <div class="btn-square rounded-circle mx-auto mb-3">
+                        <img class="img-fluid" src="{%static 'images/icon/6.png'  %}" alt="Icon" />
+                     </div>
+                     <h4 class="mb-3">Live video translation</h4>
+                     <p class="mb-4">
+                        live video translation for Arabic sign language contributes significantly to bridging the communication gap and promoting equality of access for deaf individuals in Arabic-speaking regions..
+
+                     </p>
+                     <a class="btn btn-sm" href=""><i class="fa fa-plus me-2"></i>Read More</a>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="service-item rounded d-flex h-100">
+                  <div class="service-img rounded">
+                     <img class="img-fluid" src="{%static 'images/8.jpg' %}" alt="" />
+                  </div>
+                  <div class="service-text rounded p-5">
+                     <div class="btn-square rounded-circle mx-auto mb-3">
+                        <img class="img-fluid" src="{%static 'images/icon/8.png' %}" alt="Icon" />
+                     </div>
+                     <h4 class="mb-3">Communication Consistency</h4>
+                     <p class="mb-4">
+                        It enhances accessibility by providing instant translation of spoken or written Arabic into sign language, allowing deaf individuals to participate more fully in conversations, meetings, or events..
+                     </p>
+                     <a class="btn btn-sm " href=""><i class="fa fa-plus me-2"></i>Read More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+
+   <!-- Service End -->
+
+
+<!-- Facts Start -->
+<div class="container-fluid facts my-5 py-5" data-parallax="scroll" data-image-src="images/carousel-1.jpg">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="text-center wow fadeIn" data-wow-delay="0.1s">
+                    <h1 class="display-4 text-white" data-toggle="counter-up">466 million</h1>
+                    <span class="fs-2 fw-semi-bold text-light">Deaf People</span>
+                </div>
+                
+            </div>
+        </div>
+</div>
+<!-- Facts End -->
+
+
+   
+
+
+   
+ <!-- Footer Start -->
+<div class="container-fluid text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+           <div class="row g-5">
+              <div class="col-lg-4 col-md-6">
+                 <h4 class="text-white mb-4">Follow Us</h4>
+                 <div class="d-flex pt-2">
+                   
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2 social-btntwit" href=""><i
+                          class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2 social-btnsfb" href=""><i
+                          class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2 social-btnsyt" href=""><i
+                          class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2 social-btnslinke" href=""><i
+                          class="fab fa-linkedin-in"></i></a>
+                 </div>
+              </div>
+              <div class="col-lg-5 col-md-6">
+                 <h4 class="text-white mb-4">About project</h4>
+                 <a class="btn btn-link" href="">Live feed</a>
+                 <br>
+                 <a class="btn btn-link" href="">how to </a>
+                 <br>
+                 <a class="btn btn-link" href="">Pictures</a>
+              </div>
+              <div class="col-lg-2 col-md-8">
+                 <h4 class="text-white mb-4">Quick Links</h4>
+                 <a class="btn btn-link" href="">About Us</a>
+                 <a class="btn btn-link" href="">Contact Us</a>
+                 <a class="btn btn-link" href="">Our Services</a>
+              </div>
+           </div>
+        </div>
+</div>
+<!-- Footer End -->
+<!-- Back to Top -->
+   <a href="#" class="btn btn-lg btn-blue btn-lg-square rounded-circle back-to-top"><i
+         class="bi bi-arrow-up"></i></a>
+<!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/parallax/parallax.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

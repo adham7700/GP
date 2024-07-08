@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Sign Language Translator</h1>
+<form method="post" action="{% url 'translatee' %}">
+    {% csrf_token %}
+    <textarea name="text" rows="4" cols="50" placeholder="Enter text to translate"></textarea>
+    <br>
+    <button type="submit">Translate</button>
+</form>
+
+{% if video_path %}
+    <h2>Translated Video:</h2>
+    <video width="600" controls>
+        <source src="{% static 'D:/GraduationProjecGPmainproject\GraduationProject-main\project1\blog\static\videos\output_video.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+{% endif %}
+
+{% endblock content %}

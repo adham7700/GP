@@ -1,0 +1,147 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+    
+   
+    
+
+<div class="page">
+    <div class="containerx">
+      <div class="left">
+        <div class="login">Register</div>
+        
+            
+        <small id="hint_id_password1" class="form-text text-muted text-shadow" style="display: none;">Enter a strong password with at least 8 characters.</small>
+        <small id="hint_id_password2" class="form-text text-muted text-shadow" style="display: none;">Enter the same password as before, for verification.</small>
+        <small id="hint_id_username" class="text-muted mb-4 text-shadow" style="display: none;">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+        <small id="hint_id_email" class="form-text text-muted text-shadow" style="display: none;">Enter a valid email address.</small>
+
+    </div>
+
+<div class="right py-5">
+        
+      
+        
+    <form method="POST">
+        {% csrf_token %}
+        <div class="col-md-8 ">
+            <div class="panel panel-default px-lg-4">
+                
+                <div class="panel-body">
+                    <div id="div_id_username" class="form-group clearfix">
+                        <label for="id_username" class="requiredField">Username<span class="asteriskField">*</span></label>
+                        <div class="input-icons">
+                            <i class="fa fa-user icon"></i>
+                            <input type="text" name="username" maxlength="150" autofocus="" class="form-control" required="" aria-describedby="id_username_helptext" id="id_username" fdprocessedid="k8yky" data-hint="hint_id_username">
+                            </div>
+                    </div>
+                
+                
+                    
+                        <div id="div_id_email" class="form-group">
+                            <label for="id_email" class="requiredField">E-mail<span class="asteriskField">*</span></label>
+
+                            <div class="input-icons">
+                                <i class="fa fa-envelope icon"></i>
+                                
+                                    <input type="email" name="email" maxlength="320" class="emailinput form-control " required="" id="id_email" fdprocessedid="71zc4a" data-hint="hint_id_email">
+                                
+                            </div>
+                        </div>
+                    
+                        <div id="div_id_password1" class="form-group">
+                            <label for="id_password1" class="requiredField">Password<span class="asteriskField">*</span></label>
+
+                            <div class="input-icons">
+                                <i class="fa fa-lock icon"></i>
+                                
+                                    <input type="password" name="password1" autocomplete="new-password" class="passwordinput form-control" required="" aria-describedby="id_password1_helptext" id="id_password1" fdprocessedid="ydjmzm" data-hint="hint_id_password1">
+                                
+                            </div>
+                        </div>
+
+                        <div id="div_id_password2" class="form-group">
+                            <label for="id_password2" class="requiredField">confirmPassword<span class="asteriskField">*</span></label>
+
+                            <div class="input-icons">
+                                
+                                
+                                    <input type="password" name="password2" autocomplete="new-password" class="passwordinput form-control" required="" aria-describedby="id_password2_helptext" id="id_password2" fdprocessedid="2v0pg" data-hint="hint_id_password2">
+                                    <i class="fa fa-check-circle tick-icon py-2" style="display: none;"></i>
+                                    <p class="tick-icon ms-3 py-2" style="display: none;">Passwords matched </p>
+
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+                
+                    <button class="underline-animation signup-button ms-5"  >Register</button>
+                
+            
+        </form>
+        <p class="ms-5">Already have an account? <a class="ml-2 underline-animation" href="{% url 'login' %}">Login</a>
+
+    </div>
+    </div>
+</div>
+
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script>
+    $(document).ready(function () {
+        // Function to show hint on focus
+        function showHint(hintId) {
+            $('#' + hintId).css('display', 'block');
+        }
+        // Function to hide hint on blur
+        function hideHint(hintId) {
+            $('#' + hintId).css('display', 'none');
+        }
+
+        // Bind focus and blur events for input fields
+        $('#id_username').on('focus', function () {
+            showHint('hint_id_username');
+        }).on('blur', function () {
+            hideHint('hint_id_username');
+        });
+
+        $('#id_email').on('focus', function () {
+            showHint('hint_id_email');
+        }).on('blur', function () {
+            hideHint('hint_id_email');
+        });
+
+        $('#id_password1').on('focus', function () {
+            showHint('hint_id_password1');
+        }).on('blur', function () {
+            hideHint('hint_id_password1');
+        });
+
+        $('#id_password2').on('focus', function () {
+            showHint('hint_id_password2');
+        }).on('blur', function () {
+            hideHint('hint_id_password2');
+        });
+    });
+</script>
+    <script>
+        $(document).ready(function () {
+            $('#id_password1, #id_password2').on('keyup', function () {
+                var password1 = $('#id_password1').val();
+                var password2 = $('#id_password2').val();
+
+                if (password1 === password2 && password1 !== '') {
+                    $('.tick-icon').css('display', 'inline-block');
+                } else {
+                    $('.tick-icon').css('display', 'none');
+                }
+            });
+        });
+    </script>
+{% endblock %}

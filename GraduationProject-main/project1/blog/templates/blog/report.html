@@ -1,0 +1,33 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+https://www.w3schools.com/
+
+<!--article start-->
+{% block content %}
+<div class="container">
+    {% for report in reports %}
+    <article class="media content-section">
+
+         <img class="rounded-circle account-img" src="{{report.author.profile.image.url}}">
+
+      <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ report.author }}</a>
+                <small class="text-muted">{{ report.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ report.title }}</a></h2>
+            <p class="article-content">{{ report.content }}</p>
+      </div>
+    </article>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+<!--article end-->
+
+
+</body>
+
+</html>

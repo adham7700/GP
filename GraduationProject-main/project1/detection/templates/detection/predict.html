@@ -1,0 +1,21 @@
+
+<!-- detection/templates/detection/predict.html -->
+
+{% extends "blog/base.html" %}
+{% block content %}
+
+
+    
+    
+  
+    <h1 class="pt-5 py-2">from sign language to text </h1>
+    <form action="{%url 'zyadaa'%}" method="get">
+        <button class="signup-button pt-3 max-width py-sm-3" id="run-emotion-detection" >sign language Detection</button>
+    </form>
+    <h1 class="pt-5 py-2">from text to sign language</h1>
+    <form action="{%url 'translate'%}" method="get">
+        <button class="signup-button pt-3 max-width py-sm-3" id="run-emotion-detection" >translate to sign language</button>
+    </form>
+
+
+{% endblock content %}

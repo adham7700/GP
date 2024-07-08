@@ -1,0 +1,95 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+<!-- Customized Bootstrap Stylesheet -->
+<link href="{% static 'blog/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Template Stylesheet -->
+<link rel="stylesheet" type="text/css" href="{%static 'blog/style.css'%}">
+<link rel="stylesheet" type="text/css" href="{%static 'blog/main.css'}">
+{% block content %}
+<div class="page">
+    <div class="containerx">
+        <div class="left">
+            <div class="login">Login</div>
+        </div>
+        <div class="right py-5">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-md-8 ">
+                    <div class="panel panel-default px-lg-4">
+                        <div class="panel-body">
+                            <div class="input-icons">
+                                <i class="fa fa-user icon"></i>
+                                <label for="id_username" class="sr-only">Username</label>
+                                <input type="text" name="username" autofocus="" class="form-control" required="" id="id_username" fdprocessedid="k8yky" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <div class="input-icons">
+                                    <i class="fa fa-lock icon"></i>
+                                    <label for="id_password" class="sr-only">Password</label>
+                                    <input type="password" name="password" autocomplete="current-password" class="passwordinput form-control " required="" id="id_password" fdprocessedid="ydjmzm" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="underline-animation signup-button ms-5 " type="submit">Login</button>
+                </div>
+            </form>
+            <br>
+            <p class="ms-3"> Don't have an account yet? <a class="ml-2 underline-animation " href="{% url 'register' %}">Register</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    var current = null;
+    document.querySelector('#email').addEventListener('focus', function(e) {
+        if (current) current.pause();
+        current = anime({
+            targets: 'path',
+            strokeDashoffset: {
+                value: 0,
+                duration: 700,
+                easing: 'easeOutQuart'
+            },
+            strokeDasharray: {
+                value: '240 1386',
+                duration: 700,
+                easing: 'easeOutQuart'
+            }
+        });
+    });
+    document.querySelector('#password').addEventListener('focus', function(e) {
+        if (current) current.pause();
+        current = anime({
+            targets: 'path',
+            strokeDashoffset: {
+                value: -336,
+                duration: 700,
+                easing: 'easeOutQuart'
+            },
+            strokeDasharray: {
+                value: '240 1386',
+                duration: 700,
+                easing: 'easeOutQuart'
+            }
+        });
+    });
+    document.querySelector('#submit').addEventListener('focus', function(e) {
+        if (current) current.pause();
+        current = anime({
+            targets: 'path',
+            strokeDashoffset: {
+                value: -730,
+                duration: 700,
+                easing: 'easeOutQuart'
+            },
+            strokeDasharray: {
+                value: '530 1386',
+                duration: 700,
+                easing: 'easeOutQuart'
+            }
+        });
+    });
+</script>
+{% endblock %}

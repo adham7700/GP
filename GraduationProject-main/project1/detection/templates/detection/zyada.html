@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Video with Result</h1>
+<img src="{% url 'video_feed' %}" id="video">
+<div>
+    <h2>Final Action</h2>
+    <textarea id="result_text" readonly style="width: 100%; min-height: 100px;"></textarea>
+</div>
+
+<script>
+    function fetchResult() {
+        fetch("{% url 'get_result' %}")
+        .then(response => response.json())
+        .then(data => {
+            let resultTextBox = document.getElementById('result_text');
+            if (data.result ) {
+                resultTextBox.value =data.result.join(' ');
+
+                // Auto adjust height of textarea based on content
+                resultTextBox.style.height = 'auto';
+                resultTextBox.style.height = (resultTextBox.scrollHeight) + 'px';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    setInterval(fetchResult, 1000); // Fetch result every second
+</script>
+{% endblock content %}
