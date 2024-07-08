@@ -11,4 +11,6 @@ pip install crispy-bootstrap4
 pip install django-phonenumber-field  
 pip install django-phonenumbers   
 python manage.py makemigration   
-python manage.py migrate    
+python manage.py migrate
+
+
